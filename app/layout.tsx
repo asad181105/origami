@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: 'The Origami AI | Fold Complexity Into Intelligent AI Agents',
   description: 'The Origami AI builds secure, customized AI agents that automate your business — without disrupting your workflow.',
   keywords: ['AI agents', 'business automation', 'customer support AI', 'sales automation', 'HR automation'],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'The Origami AI | Fold Complexity Into Intelligent AI Agents',
     description: 'The Origami AI builds secure, customized AI agents that automate your business.',

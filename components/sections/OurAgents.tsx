@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
-import { WHATSAPP_URL_WITH_MESSAGE } from '@/lib/constants'
 
 const agents = [
   {
@@ -84,8 +83,8 @@ export default function OurAgents() {
                   </div>
                 </div>
 
-                <Button href={WHATSAPP_URL_WITH_MESSAGE} variant="outline" className="w-full">
-                  Request on WhatsApp
+                <Button href="/contact" variant="outline" className="w-full">
+                  Contact Us
                 </Button>
               </Card>
             </motion.div>

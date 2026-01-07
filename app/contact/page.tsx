@@ -17,7 +17,7 @@ export default function ContactPage() {
             Tell us about your business, and we'll show you how our AI agents can fold complexity into simplicity.
           </p>
           <p className="text-base text-neutral-500 max-w-2xl mx-auto">
-            Or chat with us directly on WhatsApp for instant support.
+            Fill out the form below and we'll get back to you as soon as possible.
           </p>
         </div>
         <ContactForm />

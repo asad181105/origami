@@ -5,14 +5,13 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from '@/components/ui/Button'
-import { WHATSAPP_URL_WITH_MESSAGE } from '@/lib/constants'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-light/80 backdrop-blur-md border-b border-neutral-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-4 left-4 right-4 z-50 bg-background-light/90 backdrop-blur-md border border-neutral-200 rounded-2xl shadow-lg max-w-7xl mx-auto">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
@@ -43,8 +42,11 @@ export default function Navbar() {
             <Link href="/contact" className="text-neutral-700 hover:text-neutral-900 transition-colors">
               Contact
             </Link>
-            <Button href={WHATSAPP_URL_WITH_MESSAGE} variant="primary">
-              Chat on WhatsApp
+            <Button href="/demo" variant="outline">
+              Demo
+            </Button>
+            <Button href="/contact" variant="primary">
+              Contact Us
             </Button>
           </div>
 
@@ -79,7 +81,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-neutral-200 bg-background-light"
+            className="md:hidden border-t border-neutral-200 bg-background-light rounded-b-2xl"
           >
             <div className="px-4 py-6 space-y-4">
               <Link
@@ -110,8 +112,11 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              <Button href={WHATSAPP_URL_WITH_MESSAGE} variant="primary" className="w-full">
-                Chat on WhatsApp
+              <Button href="/demo" variant="outline" className="w-full">
+                Demo
+              </Button>
+              <Button href="/contact" variant="primary" className="w-full">
+                Contact Us
               </Button>
             </div>
           </motion.div>

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
-import { WHATSAPP_URL_WITH_MESSAGE } from '@/lib/constants'
 
 export default function Hero() {
   return (
@@ -66,11 +65,11 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Button href={WHATSAPP_URL_WITH_MESSAGE} variant="primary" className="text-lg px-8 py-4">
-            Chat on WhatsApp
+          <Button href="/demo" variant="primary" className="text-lg px-8 py-4">
+            Demo
           </Button>
-          <Button href="/agents" variant="outline" className="text-lg px-8 py-4">
-            Explore Agents
+          <Button href="/contact" variant="outline" className="text-lg px-8 py-4">
+            Contact Us
           </Button>
         </motion.div>
 

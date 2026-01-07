@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
-import { WHATSAPP_URL_WITH_MESSAGE } from '@/lib/constants'
 
 export default function CTASection() {
   return (
@@ -52,7 +51,7 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto"
         >
-          Ready to automate your workflows? Chat with us on WhatsApp to discuss how we can build your custom AI agent.
+          Ready to automate your workflows? Contact us to discuss how we can build your custom AI agent.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,8 +59,8 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button href={WHATSAPP_URL_WITH_MESSAGE} variant="secondary" className="text-lg px-10 py-5">
-            Chat on WhatsApp
+          <Button href="/contact" variant="secondary" className="text-lg px-10 py-5">
+            Contact Us
           </Button>
         </motion.div>
       </div>

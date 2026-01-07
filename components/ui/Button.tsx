@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void
   className?: string
   type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
 export default function Button({
@@ -18,13 +19,20 @@ export default function Button({
   onClick,
   className = '',
   type = 'button',
+  disabled = false,
 }: ButtonProps) {
   const baseStyles = 'px-6 py-3 rounded-lg font-medium transition-all duration-200 inline-flex items-center justify-center'
   
   const variants = {
-    primary: 'bg-black text-white hover:bg-neutral-900 shadow-lg hover:shadow-xl',
-    secondary: 'bg-gradient-to-r from-accent-purple-800 to-accent-purple-700 text-white hover:opacity-90 shadow-lg hover:shadow-xl',
-    outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-neutral-400 hover:bg-neutral-50',
+    primary: disabled 
+      ? 'bg-neutral-400 text-white cursor-not-allowed' 
+      : 'bg-black text-white hover:bg-neutral-900 shadow-lg hover:shadow-xl',
+    secondary: disabled
+      ? 'bg-neutral-400 text-white cursor-not-allowed'
+      : 'bg-gradient-to-r from-accent-purple-800 to-accent-purple-700 text-white hover:opacity-90 shadow-lg hover:shadow-xl',
+    outline: disabled
+      ? 'border-2 border-neutral-300 text-neutral-400 cursor-not-allowed'
+      : 'border-2 border-neutral-300 text-neutral-700 hover:border-neutral-400 hover:bg-neutral-50',
   }
 
   const buttonContent = (
@@ -57,7 +65,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className="inline-block">
+    <button type={type} onClick={onClick} disabled={disabled} className="inline-block">
       {buttonContent}
     </button>
   )
