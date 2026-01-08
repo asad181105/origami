@@ -89,11 +89,11 @@ origamiai/
 - ✅ Contact form with validation
 - ✅ Ready for pricing and login pages
 
-## 📱 WhatsApp Integration
+## 📱 Contact & Demo
 
-All CTA buttons redirect to WhatsApp for instant communication:
-- WhatsApp Number: 8247579990
-- Configured in `lib/constants.ts`
+- Contact form with Supabase backend integration
+- Demo page showcasing AI agent capabilities  
+- All CTAs redirect to contact page or demo page
 
 ## 🚀 Deployment
 

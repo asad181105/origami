@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Supabase is configured
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      return NextResponse.json(
+        { error: 'Server configuration error. Please contact support.' },
+        { status: 503 }
+      )
+    }
+
     const body = await request.json()
     const { name, designation, company, email, requirement } = body
 
@@ -23,8 +33,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Create Supabase client with actual env vars
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
+
     // Insert into Supabase
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('contact_submissions')
       .insert([
         {

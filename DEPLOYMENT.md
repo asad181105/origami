@@ -2,8 +2,10 @@
 
 ## Pre-Deployment Checklist
 
-✅ All CTA buttons redirect to WhatsApp (wa.me/8247579990)
-✅ WhatsApp integration configured
+✅ All CTA buttons redirect to Contact Us page
+✅ Demo page created with agent demos
+✅ Contact form with Supabase integration
+✅ Floating navbar with rounded edges
 ✅ All pages are SEO-optimized
 ✅ Build configuration ready
 
@@ -22,14 +24,24 @@ npm start
 
 ## Environment Variables
 
-No environment variables required for basic deployment.
+For full functionality (contact form), you need:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+See `SUPABASE_SETUP.md` for detailed instructions.
 
 ## Deployment Platforms
 
 ### Vercel (Recommended)
 1. Push code to GitHub
 2. Import project in Vercel
-3. Deploy automatically
+3. Add environment variables (see above)
+4. Deploy automatically
+
+**See `VERCEL_DEPLOYMENT.md` for detailed Vercel deployment instructions.**
 
 ### Netlify
 1. Connect repository
@@ -41,11 +53,12 @@ No environment variables required for basic deployment.
 - Run `npm run build` to create production build
 - Serve the `.next` folder
 
-## WhatsApp Configuration
+## Contact Form Configuration
 
-WhatsApp number is configured in `lib/constants.ts`:
-- Number: 8247579990
-- URL: https://wa.me/8247579990
+The contact form requires Supabase setup:
+1. Follow `SUPABASE_SETUP.md` to create database
+2. Add environment variables to your hosting platform
+3. Run the SQL migration in Supabase dashboard
 
-To change the WhatsApp number, update `lib/constants.ts`.
+The form will work without Supabase, but submissions won't be saved.
 
