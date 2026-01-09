@@ -16,8 +16,9 @@ Use this checklist to ensure your deployment is successful.
 - [ ] Project imported from GitHub
 - [ ] Build settings verified (auto-detected for Next.js)
 - [ ] Environment variables added:
-  - [ ] `NEXT_PUBLIC_SUPABASE_URL`
-  - [ ] `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - [ ] `NEXT_PUBLIC_SUPABASE_URL` = `https://ebemvyipoovemrvsitbw.supabase.co`
+  - [ ] `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `sb_publishable_MslmEAj6uC6OZUFhnuK4tg_K7YXYxXU`
+  - [ ] `ADMIN_PASSWORD` = (your secure password)
 
 ## Supabase Setup
 

@@ -38,19 +38,21 @@ vercel --prod
 
 ## Step 3: Configure Environment Variables
 
-After your first deployment, you need to add environment variables:
+**Important:** Add these BEFORE your first deployment for best results!
 
-1. Go to your project dashboard on Vercel
-2. Navigate to **Settings** → **Environment Variables**
-3. Add the following variables:
+1. In the Vercel project setup page, scroll to **"Environment Variables"**
+2. Add the following variables:
 
 ```
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_URL=https://ebemvyipoovemrvsitbw.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_MslmEAj6uC6OZUFhnuK4tg_K7YXYxXU
+ADMIN_PASSWORD=your_secure_password_here
 ```
 
-4. Click **"Save"**
-5. **Redeploy** your application for the changes to take effect
+3. Select **all environments** (Production, Preview, Development) for each variable
+4. Click **"Add"** after each variable
+
+**Note:** If you already deployed, add these in **Settings** → **Environment Variables** and redeploy.
 
 ## Step 4: Set Up Supabase Database
 
@@ -86,10 +88,11 @@ Vercel automatically detects Next.js projects and uses these settings:
 
 ## Environment Variables Reference
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes (for contact form) |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon/public key | Yes (for contact form) |
+| Variable | Description | Required | Value |
+|----------|-------------|----------|-------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes | `https://ebemvyipoovemrvsitbw.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon/public key | Yes | `sb_publishable_MslmEAj6uC6OZUFhnuK4tg_K7YXYxXU` |
+| `ADMIN_PASSWORD` | Password for admin dashboard | Yes | Your secure password |
 
 ## Troubleshooting
 
