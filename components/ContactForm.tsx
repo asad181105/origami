@@ -11,6 +11,7 @@ export default function ContactForm() {
     designation: '',
     company: '',
     email: '',
+    phone: '',
     requirement: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -149,6 +150,21 @@ export default function ContactForm() {
             onChange={handleChange}
             className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all"
             placeholder="john@company.com"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all"
+            placeholder="+1 (555) 123-4567"
           />
         </div>
 

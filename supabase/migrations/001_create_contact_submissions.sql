@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   designation TEXT NOT NULL,
   company TEXT NOT NULL,
   email TEXT NOT NULL,
+  phone TEXT,
   requirement TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -25,12 +26,12 @@ CREATE POLICY "Allow public inserts" ON contact_submissions
   TO anon, authenticated
   WITH CHECK (true);
 
--- Create policy to allow reads only for authenticated users (optional, adjust as needed)
--- Uncomment if you want to restrict reads to authenticated users only
--- CREATE POLICY "Allow authenticated reads" ON contact_submissions
---   FOR SELECT
---   TO authenticated
---   USING (true);
+-- Create policy to allow reads (admin access is protected by API password)
+-- The API route handles authentication, so we allow reads with anon key
+CREATE POLICY "Allow admin reads" ON contact_submissions
+  FOR SELECT
+  TO anon, authenticated
+  USING (true);
 
 -- Create a function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()

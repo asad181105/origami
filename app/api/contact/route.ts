@@ -14,12 +14,12 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { name, designation, company, email, requirement } = body
+    const { name, designation, company, email, phone, requirement } = body
 
     // Validate required fields
     if (!name || !designation || !company || !email || !requirement) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'All required fields must be filled' },
         { status: 400 }
       )
     }
@@ -46,6 +46,7 @@ export async function POST(request: NextRequest) {
           designation,
           company,
           email,
+          phone: phone || null,
           requirement,
           created_at: new Date().toISOString(),
         },
