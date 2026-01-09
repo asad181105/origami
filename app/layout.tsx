@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Suspense } from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -48,6 +50,9 @@ export default function RootLayout({
             gtag('config', 'G-DX2ZL47E1G');
           `}
         </Script>
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         <Navbar />
         <main className="min-h-screen">
           {children}
