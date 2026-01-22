@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Origami';
-  src: url('/fonts/Origami.ttf') format('truetype');
+  font-family: 'Black Mango';
+  src: url('/fonts/Black%20Mango%20Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,8 @@
 @layer base {
   :root {
     --font-inter: 'Inter', system-ui, sans-serif;
-    --font-origami: 'Origami', system-ui, sans-serif;
+    /* Keep var name for theme consistency; swap underlying typeface */
+    --font-origami: 'Black Mango', system-ui, sans-serif;
   }
 
   * {

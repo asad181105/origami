@@ -4,34 +4,30 @@ import { motion } from 'framer-motion'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 
-const benefits = [
+const points = [
   {
-    title: 'No Tech Knowledge Required',
-    description: "You don't need a data science team. We handle the AI, setup, and integrations end-to-end for you.",
+    title: 'Call Recordings',
+    description: 'Listen to any call to understand exactly how customers interact with your AI voice agent.',
   },
   {
-    title: 'Works for Any Size of Business',
-    description:
-      'From small local services to fast-growing startups and large enterprises — AI voice agents adapt to your volume.',
+    title: 'AI Call Summaries',
+    description: 'Get crisp summaries of every conversation — no need to scrub through long recordings.',
   },
   {
-    title: 'Set Up in Days, Not Months',
-    description:
-      'Most customers see their first AI voice agent live in days, not the months traditional call center setups take.',
+    title: 'Call Classification',
+    description: 'Automatically tag calls by intent — support, sales, complaints, renewals, feedback, and more.',
   },
   {
-    title: 'AI Adapts to Your Process',
-    description:
-      'We adapt the AI to your scripts, workflows, and tools — not the other way around. No need to rebuild your operations.',
+    title: 'Customer Intent Detection',
+    description: 'See why customers are calling and what they care about most, in real time.',
   },
   {
-    title: 'Human + AI, Not Human vs AI',
-    description:
-      'Agents escalate complex calls to your team with full context, so your people stay in control of customer relationships.',
+    title: 'Performance Dashboards',
+    description: 'Monitor volumes, resolution rates, call outcomes, and agent performance from a single view.',
   },
 ]
 
-export default function WhyOrigami() {
+export default function AnalyticsInsights() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-50">
       <div className="max-w-7xl mx-auto">
@@ -43,15 +39,16 @@ export default function WhyOrigami() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Think AI Isn&apos;t Useful for Your Business? Think Again.
+            Every Call. Every Insight.
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Origami AI makes AI voice agents practical for real-world businesses in India — without extra complexity.
+            Go beyond automation with analytics that show you exactly what customers are saying and how your AI is
+            performing.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefits.map((benefit, index) => (
+          {points.map((point, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -60,8 +57,8 @@ export default function WhyOrigami() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Card className="h-full">
-                <h3 className="text-xl font-heading font-bold mb-3">{benefit.title}</h3>
-                <p className="text-neutral-600">{benefit.description}</p>
+                <h3 className="text-xl font-heading font-bold mb-3">{point.title}</h3>
+                <p className="text-neutral-600">{point.description}</p>
               </Card>
             </motion.div>
           ))}
@@ -86,4 +83,5 @@ export default function WhyOrigami() {
     </section>
   )
 }
+
 

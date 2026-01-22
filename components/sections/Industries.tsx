@@ -2,15 +2,25 @@
 
 import { motion } from 'framer-motion'
 import Card from '@/components/ui/Card'
+import Button from '@/components/ui/Button'
 
-const industries = [
-  { name: 'Healthcare', description: 'Patient support, appointment scheduling, medical inquiries' },
-  { name: 'Real Estate', description: 'Property inquiries, lead qualification, virtual tours' },
-  { name: 'E-commerce', description: 'Customer support, order tracking, product recommendations' },
-  { name: 'Education', description: 'Student inquiries, enrollment, course information' },
-  { name: 'Logistics', description: 'Tracking, delivery updates, customer service' },
-  { name: 'Finance', description: 'Account inquiries, transaction support, compliance' },
-  { name: 'SMEs', description: 'Multi-purpose agents for growing businesses' },
+const points = [
+  {
+    title: 'English',
+    description: 'Fluent, natural-sounding conversations for modern, urban customers and global teams.',
+  },
+  {
+    title: 'Hindi',
+    description: 'Serve the largest segment of Indian customers with native Hindi support.',
+  },
+  {
+    title: 'Regional Languages',
+    description: 'Support for Telugu, Tamil, Kannada, Marathi, Gujarati, Bengali, Urdu and more (based on your needs).',
+  },
+  {
+    title: 'Mixed-Language Calls',
+    description: 'Handle code-switching between English, Hindi, and regional languages in the same call.',
+  },
 ]
 
 export default function Industries() {
@@ -25,15 +35,15 @@ export default function Industries() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Industries We Serve
+            Built for India. Ready for the World.
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Custom AI agents for every industry
+            AI voice agents that understand your customers — in the languages they actually speak.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {industries.map((industry, index) => (
+          {points.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -42,12 +52,28 @@ export default function Industries() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
               <Card className="h-full text-center">
-                <h3 className="text-xl font-heading font-bold mb-2">{industry.name}</h3>
-                <p className="text-sm text-neutral-600">{industry.description}</p>
+                <h3 className="text-xl font-heading font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-neutral-600">{item.description}</p>
               </Card>
             </motion.div>
           ))}
         </div>
+
+        {/* Section CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button href="/demo" variant="primary" className="px-8 py-3">
+            Demo
+          </Button>
+          <Button href="/contact" variant="outline" className="px-8 py-3">
+            Contact Us
+          </Button>
+        </motion.div>
       </div>
     </section>
   )

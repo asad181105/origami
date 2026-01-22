@@ -9,9 +9,14 @@ export async function GET(request: NextRequest) {
   try {
     // Check for admin password in headers
     const authHeader = request.headers.get('authorization')
-    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123' // Default password, change in production
+    const adminPassword = process.env.ADMIN_PASSWORD
 
-    if (!authHeader || authHeader !== `Bearer ${adminPassword}`) {
+    // In development, fall back to a default password if env is missing,
+    // and also allow a hardcoded dev password for easier local testing.
+    const devFallbackPassword =
+      process.env.NODE_ENV === 'development' ? (adminPassword || '123456789') : adminPassword
+
+    if (!devFallbackPassword || !authHeader || authHeader !== `Bearer ${devFallbackPassword}`) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }

@@ -2,22 +2,26 @@
 
 import { motion } from 'framer-motion'
 import Card from '@/components/ui/Card'
+import Button from '@/components/ui/Button'
 
 const steps = [
   {
     number: '01',
     title: 'Understand Your Workflow',
-    description: 'We dive deep into your business processes, pain points, and goals. No generic solutions — we build for your specific needs.',
+    description:
+      'We map your current customer journey, call flows, and tools — so the AI voice agent fits into your existing process.',
   },
   {
     number: '02',
-    title: 'Design & Fold a Custom AI Agent',
-    description: 'Our team designs and develops your AI agent, trained on your data and integrated with your existing tools. Like origami, we fold complexity into simplicity.',
+    title: 'Build & Train Your AI Agent',
+    description:
+      'We design, configure, and train your AI voice agent on your scripts, FAQs, and data — then connect it to your systems.',
   },
   {
     number: '03',
-    title: 'Deploy, Integrate & Scale',
-    description: 'We deploy your agent, integrate it seamlessly with your systems, and help you scale. Ongoing support ensures it keeps getting better.',
+    title: 'Deploy, Monitor & Scale',
+    description:
+      'We go live on your phone numbers, monitor performance, refine conversations, and help you scale to thousands of calls.',
   },
 ]
 
@@ -33,10 +37,10 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            How It Works
+            How Origami AI Works
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Three simple steps to transform your business
+            A simple 3-step process to launch AI voice agents for your customer care.
           </p>
         </motion.div>
 
@@ -61,6 +65,22 @@ export default function HowItWorks() {
             </motion.div>
           ))}
         </div>
+
+        {/* Section CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button href="/demo" variant="primary" className="px-8 py-3">
+            Demo
+          </Button>
+          <Button href="/contact" variant="outline" className="px-8 py-3">
+            Contact Us
+          </Button>
+        </motion.div>
       </div>
     </section>
   )

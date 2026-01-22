@@ -42,7 +42,7 @@ export default function CTASection() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-6xl font-heading font-bold mb-6"
         >
-          Let's Fold AI Into Your Business
+          Ready to Transform Your Customer Care?
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto"
         >
-          Ready to automate your workflows? Contact us to discuss how we can build your custom AI agent.
+          Book a live demo or talk to our team about how AI voice agents can handle your customer calls end-to-end.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,9 +59,14 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button href="/contact" variant="secondary" className="text-lg px-10 py-5">
-            Contact Us
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/demo" variant="secondary" className="text-lg px-10 py-5">
+              Book a Free Demo
+            </Button>
+            <Button href="/contact" variant="outline" className="text-lg px-10 py-5">
+              Talk to Sales
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -43,10 +43,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-balance">
-            We Fold Complexity Into
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-balance">
+            AI Voice Agents 
             <br />
-            <span className="gradient-text">Intelligent AI Agents</span>
+            <span className="gradient-text">That Handle Calls Like Humans</span>
           </h1>
         </motion.div>
 
@@ -56,7 +56,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl md:text-2xl text-neutral-600 mb-10 max-w-3xl mx-auto text-balance"
         >
-          The Origami AI builds secure, customized AI agents that automate your business — without disrupting your workflow.
+          Automate customer support, bookings, and follow-ups in English, Hindi, and regional Indian languages — without replacing your team.
         </motion.p>
 
         <motion.div
@@ -66,12 +66,21 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <Button href="/demo" variant="primary" className="text-lg px-8 py-4">
-            Demo
+            Get a Free Demo
           </Button>
           <Button href="/contact" variant="outline" className="text-lg px-8 py-4">
-            Contact Us
+            Talk to an Expert
           </Button>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-6 text-sm md:text-base text-neutral-500"
+        >
+          Used by startups, enterprises & service businesses across India
+        </motion.p>
 
         {/* Scroll indicator */}
         <motion.div

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Card from '@/components/ui/Card'
+import Button from '@/components/ui/Button'
 
 const testimonials = [
   {
@@ -50,11 +51,6 @@ export default function Testimonials() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Card className="h-full">
-                <div className="mb-4">
-                  <svg className="w-8 h-8 text-accent-purple-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
                 <p className="text-neutral-700 mb-6 text-lg leading-relaxed">
                   "{testimonial.quote}"
                 </p>
@@ -66,6 +62,22 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </div>
+
+        {/* Section CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button href="/demo" variant="primary" className="px-8 py-3">
+            Demo
+          </Button>
+          <Button href="/contact" variant="outline" className="px-8 py-3">
+            Contact Us
+          </Button>
+        </motion.div>
       </div>
     </section>
   )
