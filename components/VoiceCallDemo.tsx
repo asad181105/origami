@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 
 export default function VoiceCallDemo() {
-  const [room, setRoom] = useState<Room | null>(null)
+  const [room, setRoom] = useState<InstanceType<typeof Room> | null>(null)
   const [isConnecting, setIsConnecting] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
@@ -114,15 +114,15 @@ export default function VoiceCallDemo() {
       
       // Subscribe to all remote audio tracks (if any exist)
       if (newRoom.remoteParticipants) {
-        newRoom.remoteParticipants.forEach((participant) => {
+        newRoom.remoteParticipants.forEach((participant: any) => {
           console.log('Subscribing to participant:', participant.identity)
           if (participant.audioTrackPublications) {
-            participant.audioTrackPublications.forEach((publication) => {
+            participant.audioTrackPublications.forEach((publication: any) => {
               if (publication.track) {
                 publication.setSubscribed(true)
               } else {
                 // Subscribe when track becomes available
-                publication.on('subscribed', (track) => {
+                publication.on('subscribed', (track: any) => {
                   console.log('Track became available:', track.kind)
                 })
               }
@@ -138,7 +138,7 @@ export default function VoiceCallDemo() {
         setIsMuted(false)
       })
 
-      newRoom.on(RoomEvent.ParticipantConnected, (participant: RemoteParticipant) => {
+      newRoom.on(RoomEvent.ParticipantConnected, (participant: any) => {
         console.log('Participant connected:', participant.identity)
         console.log('Participant kind:', participant.kind)
         const audioTracksCount = participant.audioTrackPublications?.size || 0
@@ -148,7 +148,7 @@ export default function VoiceCallDemo() {
         
         // Subscribe to all audio tracks from remote participants
         if (participant.audioTrackPublications) {
-          participant.audioTrackPublications.forEach((publication) => {
+          participant.audioTrackPublications.forEach((publication: any) => {
             console.log('Audio publication:', publication.trackSid, 'subscribed:', publication.isSubscribed)
             if (publication.track) {
               publication.setSubscribed(true)
@@ -157,20 +157,20 @@ export default function VoiceCallDemo() {
         }
       })
 
-      newRoom.on(RoomEvent.TrackPublished, (publication, participant) => {
+      newRoom.on(RoomEvent.TrackPublished, (publication: any, participant: any) => {
         console.log('Track published:', publication.kind, 'from', participant.identity)
         if (publication.kind === 'audio' && participant !== newRoom.localParticipant) {
           publication.setSubscribed(true)
         }
       })
 
-      newRoom.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
+      newRoom.on(RoomEvent.TrackSubscribed, (track: any, publication: any, participant: any) => {
         console.log('Track subscribed:', track.kind, 'from', participant.identity)
 
         if (track.kind === 'audio') {
           const audioElement = document.createElement('audio')
           audioElement.autoplay = true
-          audioElement.playsInline = true
+          audioElement.setAttribute('playsinline', 'true')
           audioElement.muted = false
           audioElement.volume = 1.0
           
@@ -211,9 +211,9 @@ export default function VoiceCallDemo() {
 
       // Subscribe to existing tracks when connecting
       if (newRoom.remoteParticipants) {
-        newRoom.remoteParticipants.forEach((participant) => {
+        newRoom.remoteParticipants.forEach((participant: any) => {
           if (participant.audioTrackPublications) {
-            participant.audioTrackPublications.forEach((publication) => {
+            participant.audioTrackPublications.forEach((publication: any) => {
               if (publication.track) {
                 publication.setSubscribed(true)
               }
