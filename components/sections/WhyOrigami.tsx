@@ -12,7 +12,7 @@ const benefits = [
   {
     title: 'Works for Any Size of Business',
     description:
-      'From small local services to fast-growing startups and large enterprises — AI voice agents adapt to your volume.',
+      'From small local services to fast-growing startups and large enterprises, AI voice agents adapt to your volume.',
   },
   {
     title: 'Set Up in Days, Not Months',
@@ -22,7 +22,7 @@ const benefits = [
   {
     title: 'AI Adapts to Your Process',
     description:
-      'We adapt the AI to your scripts, workflows, and tools — not the other way around. No need to rebuild your operations.',
+      'We adapt the AI to your scripts, workflows, and tools so you do not have to rebuild your operations.',
   },
   {
     title: 'Human + AI, Not Human vs AI',
@@ -46,7 +46,7 @@ export default function WhyOrigami() {
             Think AI Isn&apos;t Useful for Your Business? Think Again.
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Origami AI makes AI voice agents practical for real-world businesses in India — without extra complexity.
+            Origami AI makes AI voice agents practical for real-world businesses in India without extra complexity.
           </p>
         </motion.div>
 

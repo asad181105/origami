@@ -11,11 +11,11 @@ const points = [
   },
   {
     title: 'AI Call Summaries',
-    description: 'Get crisp summaries of every conversation — no need to scrub through long recordings.',
+    description: 'Get crisp summaries of every conversation without scrubbing through long recordings.',
   },
   {
     title: 'Call Classification',
-    description: 'Automatically tag calls by intent — support, sales, complaints, renewals, feedback, and more.',
+    description: 'Automatically tag calls by intent such as support, sales, complaints, renewals, and feedback.',
   },
   {
     title: 'Customer Intent Detection',

@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button'
 const agents = [
   {
     name: 'AI Customer Support Voice Agent',
-    automates: 'Handles customer support calls end-to-end — FAQs, complaints, status checks — in English, Hindi, and regional languages.',
+    automates: 'Handles end-to-end customer support calls in English, Hindi, and regional languages.',
     channels: ['Voice', 'Phone'],
   },
   {
@@ -17,7 +17,7 @@ const agents = [
   },
   {
     name: 'AI Booking Agent',
-    automates: 'Books appointments, service visits, and recurring slots — without needing a human receptionist.',
+    automates: 'Books appointments, service visits, and recurring slots without a human receptionist.',
     channels: ['Voice', 'Phone', 'IVR'],
   },
   {
@@ -54,8 +54,7 @@ export default function OurAgents() {
             Voice Customer Support Agent
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Start with our production-ready AI Voice Agent for customer care — deployed on your existing phone numbers
-            and call flows.
+            Start with our production-ready AI Voice Agent for customer care on your existing phone numbers and call flows.
           </p>
         </motion.div>
 

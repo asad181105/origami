@@ -138,10 +138,21 @@ export default function DemoPage() {
                         </ul>
                       </div>
 
-                      {/* CTA Button */}
-                      <Button href="/contact" variant="primary" className="w-full lg:w-auto">
-                        Contact Us
-                      </Button>
+                      {/* CTA Buttons */}
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        {agent.id === 'voice-bot' ? (
+                          <Button href="/demo/voice" variant="primary" className="w-full lg:w-auto">
+                            Try Now
+                          </Button>
+                        ) : (
+                          <Button href="/contact" variant="primary" className="w-full lg:w-auto">
+                            Try Now
+                          </Button>
+                        )}
+                        <Button href="/contact" variant="outline" className="w-full lg:w-auto">
+                          Contact Us
+                        </Button>
+                      </div>
                     </div>
 
                     {/* Video Side */}

@@ -97,9 +97,9 @@ origamiai/
 
 ## 🚀 Deployment
 
-The site is ready for deployment. See `DEPLOYMENT.md` for detailed instructions.
+The site is ready for Vercel. See **[VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md)** for step-by-step deployment, env vars, and troubleshooting.
 
-### Quick Deploy
+### Quick checks
 
 ```bash
 npm run build

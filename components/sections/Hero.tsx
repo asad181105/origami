@@ -56,7 +56,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl md:text-2xl text-neutral-600 mb-10 max-w-3xl mx-auto text-balance"
         >
-          Automate customer support, bookings, and follow-ups in English, Hindi, and regional Indian languages — without replacing your team.
+          Automate customer support, bookings, and follow-ups in English, Hindi, and regional Indian languages without replacing your team.
         </motion.p>
 
         <motion.div
@@ -83,7 +83,7 @@ export default function Hero() {
         </motion.p>
 
         {/* Scroll indicator */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -100,7 +100,7 @@ export default function Hero() {
               className="w-1 h-3 bg-neutral-400 rounded-full mt-2"
             />
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

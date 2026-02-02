@@ -56,15 +56,14 @@ export default function ProblemSolution() {
               Origami AI Voice Agents: Your Always-On Support Team
             </h3>
             <p className="text-neutral-700 mb-4">
-              Origami AI Voice Agents handle unlimited calls, instantly, 24/7 — in multiple Indian languages.
+              Origami AI Voice Agents handle unlimited calls instantly, 24/7 in multiple Indian languages.
             </p>
             <p className="text-neutral-700 mb-4">
-              They can answer questions, route calls, book appointments, qualify leads, and follow up automatically —
-              while your human team focuses on high-value conversations.
+              They answer questions, route calls, book appointments, qualify leads, and follow up automatically so your
+              human team can focus on high-value conversations.
             </p>
             <p className="text-neutral-600">
-              No more missed calls, long wait times, or stressed support teams. Just consistent, reliable customer care
-              at scale.
+              No more missed calls or long wait times, just reliable customer care at scale.
             </p>
           </Card>
         </motion.div>

@@ -38,7 +38,7 @@ export default function Industries() {
             Built for India. Ready for the World.
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            AI voice agents that understand your customers — in the languages they actually speak.
+            AI voice agents that understand your customers in the languages they actually speak.
           </p>
         </motion.div>
 

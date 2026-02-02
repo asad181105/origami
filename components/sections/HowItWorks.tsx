@@ -9,13 +9,13 @@ const steps = [
     number: '01',
     title: 'Understand Your Workflow',
     description:
-      'We map your current customer journey, call flows, and tools — so the AI voice agent fits into your existing process.',
+      'We map your customer journey, call flows, and tools so the AI voice agent fits into your existing process.',
   },
   {
     number: '02',
     title: 'Build & Train Your AI Agent',
     description:
-      'We design, configure, and train your AI voice agent on your scripts, FAQs, and data — then connect it to your systems.',
+      'We design, configure, and train your AI voice agent on your scripts, FAQs, and data and connect it to your systems.',
   },
   {
     number: '03',

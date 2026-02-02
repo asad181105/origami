@@ -8,7 +8,7 @@ const useCases = [
   {
     title: 'AI Customer Support Agent',
     description:
-      'Handles FAQs, complaints, and basic queries so your human team can focus on complex issues — not repetitive calls.',
+      'Handles FAQs, complaints, and basic queries so your human team can focus on complex issues.',
   },
   {
     title: 'AI Lead Qualification Agent',
@@ -18,7 +18,7 @@ const useCases = [
   {
     title: 'AI Booking Agent',
     description:
-      'Manages appointments, gas bookings, maintenance visits, and more — available 24/7 in multiple Indian languages.',
+      'Manages appointments, gas bookings, maintenance visits, and more across languages.',
   },
   {
     title: 'AI Follow-Up Agent',
