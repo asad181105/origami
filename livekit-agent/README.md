@@ -1,6 +1,6 @@
 # LiveKit Voice Agent
 
-Python backend agent for the voice demo at `/demo/voice`. **Deploys separately from the Next.js frontend.**
+Python backend agent for the voice demo on the `/demo` page. **Deploys separately from the Next.js frontend.**
 
 ## Agent vs frontend
 

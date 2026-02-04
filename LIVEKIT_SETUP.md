@@ -69,8 +69,8 @@ npm run dev
 ```
 
 2. Navigate to `/demo` page
-3. Click "Try Now" on the Voice Bot card
-4. Click "Start Call" on the voice demo page
+3. On the Demo page, find the Voice Bot card
+4. Click "Start Call" in the Voice Bot card
 5. Allow microphone access when prompted
 6. The agent should connect and you can start talking!
 

@@ -6,6 +6,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import ElevenLabsWidget from '@/components/ElevenLabsWidget'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -53,11 +54,13 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <GoogleAnalytics />
         </Suspense>
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <ElevenLabsWidget>
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </ElevenLabsWidget>
       </body>
     </html>
   )

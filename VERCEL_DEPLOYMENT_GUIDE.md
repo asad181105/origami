@@ -11,7 +11,7 @@ This guide walks you through deploying the Origami AI site to Vercel and verifyi
 | **Frontend (Next.js)** | Vercel | Website, contact form, admin, `/demo` pages, LiveKit token/dispatch APIs |
 | **LiveKit agent (Python)** | Railway, Render, Fly.io, etc. | Voice “Casey” bot – connects to LiveKit and handles real-time voice (STT/LLM/TTS) |
 
-**Flow:** User opens `/demo/voice` → frontend (Vercel) issues token and dispatches agent → **agent** (separate host) joins the LiveKit room and handles the call.
+**Flow:** User opens `/demo` (Voice Bot card) → frontend (Vercel) issues token and dispatches agent → **agent** (separate host) joins the LiveKit room and handles the call.
 
 - **Frontend only:** Contact form, admin, and the rest of the site work. Voice demo page loads but calls won’t connect until the agent is deployed.
 - **Agent only:** Not useful alone – it needs the frontend to create rooms and dispatch it.
@@ -79,7 +79,7 @@ In the project setup, open **Environment Variables**. Add these:
 | `LIVEKIT_API_SECRET` | No | LiveKit API secret – only for voice demo |
 
 - **Required:** Contact form and admin dashboard need Supabase + `ADMIN_PASSWORD`.
-- **Optional:** Voice demo at `/demo/voice` needs all three LiveKit variables.
+- **Optional:** Voice demo (on `/demo` page) needs all three LiveKit variables.
 
 Apply variables to **Production**, **Preview**, and **Development** (or as you prefer).
 
@@ -96,11 +96,11 @@ Apply variables to **Production**, **Preview**, and **Development** (or as you p
 - [ ] Homepage loads.
 - [ ] **Contact** (`/contact`) – submit the form; check Supabase **Table Editor** for the new row.
 - [ ] **Admin** (`/admin`) – log in with `ADMIN_PASSWORD`; you should see submissions.
-- [ ] **Demo** (`/demo`) and **Voice demo** (`/demo/voice`) – only fully work if LiveKit env vars are set.
+- [ ] **Demo** (`/demo`) – voice agent works fully only if LiveKit env vars are set.
 
 ### 4.1 Frontend vs agent: two deployments
 
-The **voice demo** (`/demo/voice`) uses two pieces that deploy separately:
+The **voice demo** (on the `/demo` page) uses two pieces that deploy separately:
 
 | What | Where it runs | Deploy |
 |------|----------------|--------|

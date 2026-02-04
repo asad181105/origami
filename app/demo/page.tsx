@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import { useElevenLabs } from '@/components/ElevenLabsWidget'
 
 const agentDemos = [
   {
     id: 'voice-bot',
     name: 'Voice Bot',
     description: 'Experience our intelligent voice agent that handles customer calls with natural conversation flow. Our voice bot can answer queries, schedule appointments, provide support, and handle complex interactions seamlessly across multiple languages.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
+    videoUrl: null,
     features: [
       'Natural language understanding',
       'Multi-language support',
@@ -68,6 +69,8 @@ const agentDemos = [
 ]
 
 export default function DemoPage() {
+  const elevenLabs = useElevenLabs()
+
   return (
     <div className="min-h-screen bg-background-light pt-32 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,11 +143,7 @@ export default function DemoPage() {
 
                       {/* CTA Buttons */}
                       <div className="flex flex-col sm:flex-row gap-4">
-                        {agent.id === 'voice-bot' ? (
-                          <Button href="/demo/voice" variant="primary" className="w-full lg:w-auto">
-                            Try Now
-                          </Button>
-                        ) : (
+                        {agent.id !== 'voice-bot' && (
                           <Button href="/contact" variant="primary" className="w-full lg:w-auto">
                             Try Now
                           </Button>
@@ -155,17 +154,21 @@ export default function DemoPage() {
                       </div>
                     </div>
 
-                    {/* Video Side */}
+                    {/* Video / Demo Side */}
                     <div className={`flex-1 ${isEven ? 'lg:pl-0' : 'lg:pr-0'}`}>
-                      <div className="relative w-full h-0 pb-[56.25%] bg-neutral-900 rounded-lg overflow-hidden">
-                        <iframe
-                          className="absolute top-0 left-0 w-full h-full"
-                          src={agent.videoUrl}
-                          title={agent.name}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      </div>
+                      {agent.id === 'voice-bot' ? (
+                        <div className="rounded-lg overflow-hidden relative w-full min-h-[320px] bg-neutral-900 flex items-center justify-center">
+                          <p className="text-neutral-500 text-center px-4">
+                            Use the Talk to AI button to start a conversation
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="relative w-full min-h-[320px] bg-neutral-900 rounded-lg flex items-center justify-center overflow-hidden">
+                          <p className="text-2xl font-semibold text-neutral-500 uppercase tracking-widest">
+                            Coming Soon
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Card>
@@ -195,6 +198,45 @@ export default function DemoPage() {
           </Card>
         </motion.div>
       </div>
+
+      {/* Talk to AI floating button */}
+      <button
+        type="button"
+        onClick={() => elevenLabs?.openWidget()}
+        aria-label="Talk to AI"
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 9999,
+          borderRadius: '50%',
+          padding: '14px 16px',
+          background: '#111',
+          color: 'white',
+          cursor: 'pointer',
+          border: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+          <line x1="12" y1="19" x2="12" y2="23" />
+          <line x1="8" y1="23" x2="16" y2="23" />
+        </svg>
+      </button>
     </div>
   )
 }

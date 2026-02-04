@@ -6,7 +6,11 @@ import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 
-export default function VoiceCallDemo() {
+interface VoiceCallDemoProps {
+  embedded?: boolean
+}
+
+export default function VoiceCallDemo({ embedded = false }: VoiceCallDemoProps) {
   const [room, setRoom] = useState<InstanceType<typeof Room> | null>(null)
   const [isConnecting, setIsConnecting] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
@@ -263,14 +267,16 @@ export default function VoiceCallDemo() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12">
-      <Card className="w-full max-w-md">
+    <div className={embedded ? 'w-full' : 'min-h-screen flex items-center justify-center py-12'}>
+      <Card className={`w-full ${embedded ? '' : 'max-w-md'}`}>
         <div className="p-8">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-heading font-bold mb-2">Voice Agent Demo</h1>
-            <p className="text-neutral-600">Experience our AI voice agent in a live call</p>
-          </div>
+          {/* Header - compact when embedded */}
+          {!embedded && (
+            <div className="text-center mb-8">
+              <h1 className="text-3xl font-heading font-bold mb-2">Voice Agent Demo</h1>
+              <p className="text-neutral-600">Experience our AI voice agent in a live call</p>
+            </div>
+          )}
 
           {/* Phone Display */}
           <div className="mb-8">
@@ -424,9 +430,11 @@ export default function VoiceCallDemo() {
               </div>
             )}
 
-            <Button href="/demo" variant="outline" className="w-full">
-              Back to Demos
-            </Button>
+            {!embedded && (
+              <Button href="/demo" variant="outline" className="w-full">
+                Back to Demos
+              </Button>
+            )}
           </div>
 
           {/* Info */}
