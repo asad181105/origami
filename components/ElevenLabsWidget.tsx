@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
 const ElevenLabsContext = createContext<{ openWidget: () => void } | null>(null)
 
@@ -9,8 +9,30 @@ export function useElevenLabs() {
   return useContext(ElevenLabsContext)
 }
 
+function hidePoweredByBranding() {
+  const widget = document.querySelector('elevenlabs-convai')
+  if (!widget?.shadowRoot) return
+  const walk = (root: DocumentFragment | Element) => {
+    root.querySelectorAll?.('*').forEach((el) => {
+      const text = (el.textContent || '').trim().toLowerCase()
+      if (text.includes('powered by') && text.includes('elevenlabs')) {
+        ;(el as HTMLElement).style.display = 'none'
+      }
+      if (el.shadowRoot) walk(el.shadowRoot)
+    })
+  }
+  walk(widget.shadowRoot)
+}
+
 export default function ElevenLabsWidget({ children }: { children?: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) return
+    hidePoweredByBranding()
+    const id = setInterval(hidePoweredByBranding, 500)
+    return () => clearInterval(id)
+  }, [isOpen])
 
   const triggerWidget = useCallback((): boolean => {
     const widget = document.querySelector('elevenlabs-convai') as HTMLElement & {
