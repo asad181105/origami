@@ -92,8 +92,9 @@ export default function ElevenLabsWidget({ children }: { children?: React.ReactN
     <ElevenLabsContext.Provider value={{ openWidget: value }}>
     <>
       <Script
-        src="https://unpkg.com/@elevenlabs/convai-widget-embed@0.6.1"
+        src="https://unpkg.com/@elevenlabs/convai-widget-embed"
         strategy="afterInteractive"
+        async
       />
       <div
         style={{
@@ -109,7 +110,7 @@ export default function ElevenLabsWidget({ children }: { children?: React.ReactN
           transition: 'opacity 0.2s ease',
         }}
       >
-        <elevenlabs-convai agent-id="agent_7401kd8gqefaeh9bry09vzyp5vww" />
+        <elevenlabs-convai agent-id="agent_7101k9qbx354f5yvph9m1pypzxc0" />
       </div>
       {children}
     </>
