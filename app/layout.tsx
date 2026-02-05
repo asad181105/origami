@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ElevenLabsWidget from '@/components/ElevenLabsWidget'
+import { AuthProvider } from '@/components/AuthProvider'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -54,6 +55,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <GoogleAnalytics />
         </Suspense>
+        <AuthProvider>
         <ElevenLabsWidget>
           <Navbar />
           <main className="min-h-screen">
@@ -61,6 +63,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ElevenLabsWidget>
+        </AuthProvider>
       </body>
     </html>
   )

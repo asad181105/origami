@@ -3,7 +3,7 @@
 import Script from 'next/script'
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
-const ElevenLabsContext = createContext<{ openWidget: () => void } | null>(null)
+const ElevenLabsContext = createContext<{ openWidget: () => void; closeWidget: () => void } | null>(null)
 
 export function useElevenLabs() {
   return useContext(ElevenLabsContext)
@@ -78,18 +78,29 @@ export default function ElevenLabsWidget({ children }: { children?: React.ReactN
   }, [])
 
   const handleOpen = useCallback(() => {
-    // Always show widget first – it needs dimensions to render
     setIsOpen(true)
-    // Try triggering after widget has time to mount
     setTimeout(() => triggerWidget(), 150)
     setTimeout(() => triggerWidget(), 500)
     setTimeout(() => triggerWidget(), 1000)
   }, [triggerWidget])
 
-  const value = useCallback(() => handleOpen(), [handleOpen])
+  const handleClose = useCallback(() => {
+    const widget = document.querySelector('elevenlabs-convai') as HTMLElement & { shadowRoot?: ShadowRoot }
+    if (widget?.shadowRoot) {
+      const buttons = widget.shadowRoot.querySelectorAll?.('button, [role="button"]')
+      for (const btn of Array.from(buttons || [])) {
+        const label = (btn.getAttribute?.('aria-label') || btn.textContent || '').toLowerCase()
+        if (label.includes('end') || label.includes('hang') || label.includes('stop') || label.includes('close')) {
+          ;(btn as HTMLElement).click()
+          break
+        }
+      }
+    }
+    setIsOpen(false)
+  }, [])
 
   return (
-    <ElevenLabsContext.Provider value={{ openWidget: value }}>
+    <ElevenLabsContext.Provider value={{ openWidget: handleOpen, closeWidget: handleClose }}>
     <>
       <Script
         src="https://unpkg.com/@elevenlabs/convai-widget-embed"
@@ -110,7 +121,7 @@ export default function ElevenLabsWidget({ children }: { children?: React.ReactN
           transition: 'opacity 0.2s ease',
         }}
       >
-        <elevenlabs-convai agent-id="agent_7101k9qbx354f5yvph9m1pypzxc0" />
+        <elevenlabs-convai agent-id="agent_2201kd11ka59fpxawj9wvffayfhj" />
       </div>
       {children}
     </>

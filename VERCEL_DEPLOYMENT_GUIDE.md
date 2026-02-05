@@ -53,6 +53,17 @@ Do this **before** deploying so the contact form and admin work.
 4. Paste into the editor and **Run**.
 5. Confirm you see something like “Success. No rows returned.”
 
+### Run demo usage migration (for voice demo)
+
+1. In SQL Editor, run `supabase/migrations/002_demo_usage.sql` as well.
+2. This creates the table that tracks 2-minute demo limits per user.
+
+### Enable Google OAuth (for demo login)
+
+1. In Supabase: **Authentication** → **Providers** → enable **Google**.
+2. Add your Google Client ID and Secret from [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
+3. In **Authentication** → **URL Configuration**, add your redirect URLs (e.g. `https://yourdomain.com/auth/callback`, `http://localhost:3000/auth/callback`).
+
 ---
 
 ## 3. Deploy on Vercel

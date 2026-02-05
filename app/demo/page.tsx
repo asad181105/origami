@@ -1,9 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { useElevenLabs } from '@/components/ElevenLabsWidget'
+import { useAuth } from '@/components/AuthProvider'
+import { useDemoUsage } from '@/lib/useDemoUsage'
 
 const agentDemos = [
   {
@@ -70,6 +73,34 @@ const agentDemos = [
 
 export default function DemoPage() {
   const elevenLabs = useElevenLabs()
+  const { user, loading: authLoading } = useAuth()
+  const { canUse, remaining, loading: usageLoading, recordUsage, refresh } = useDemoUsage(!!user)
+  const usageIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const handleOpenDemo = () => {
+    if (!canUse) return
+    elevenLabs?.openWidget()
+    // Track usage every 15 seconds
+    usageIntervalRef.current = setInterval(async () => {
+      const stillCanUse = await recordUsage(15)
+      if (!stillCanUse) {
+        if (usageIntervalRef.current) {
+          clearInterval(usageIntervalRef.current)
+          usageIntervalRef.current = null
+        }
+        elevenLabs?.closeWidget()
+      }
+    }, 15000)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (usageIntervalRef.current) clearInterval(usageIntervalRef.current)
+    }
+  }, [])
+
+  const showDemoButton = user && canUse
+  const isLoggedIn = !!user
 
   return (
     <div className="min-h-screen bg-background-light pt-32 pb-16">
@@ -157,10 +188,21 @@ export default function DemoPage() {
                     {/* Video / Demo Side */}
                     <div className={`flex-1 ${isEven ? 'lg:pl-0' : 'lg:pr-0'}`}>
                       {agent.id === 'voice-bot' ? (
-                        <div className="rounded-lg overflow-hidden relative w-full min-h-[320px] bg-neutral-900 flex items-center justify-center">
-                          <p className="text-neutral-500 text-center px-4">
-                            Use the Talk to AI button to start a conversation
-                          </p>
+                        <div className="rounded-lg overflow-hidden relative w-full min-h-[320px] bg-neutral-900 flex flex-col items-center justify-center gap-4 p-6">
+                          {authLoading || (isLoggedIn && usageLoading) ? (
+                            <p className="text-neutral-500">Loading...</p>
+                          ) : !isLoggedIn ? (
+                            <>
+                              <p className="text-neutral-400 text-center">Sign in to try the voice demo</p>
+                              <Button href="/login" variant="primary">Sign in with Google</Button>
+                            </>
+                          ) : !canUse ? (
+                            <p className="text-neutral-500 text-center">Demo limit reached (2 min per account)</p>
+                          ) : (
+                            <p className="text-neutral-400 text-center">
+                              Use the Talk to AI button • {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')} left
+                            </p>
+                          )}
                         </div>
                       ) : (
                         <div className="relative w-full min-h-[320px] bg-neutral-900 rounded-lg flex items-center justify-center overflow-hidden">
@@ -199,10 +241,11 @@ export default function DemoPage() {
         </motion.div>
       </div>
 
-      {/* Talk to AI floating button */}
+      {/* Talk to AI floating button - only when logged in and has demo time */}
+      {showDemoButton && (
       <button
         type="button"
-        onClick={() => elevenLabs?.openWidget()}
+        onClick={handleOpenDemo}
         aria-label="Talk to AI"
         style={{
           position: 'fixed',
@@ -237,6 +280,7 @@ export default function DemoPage() {
           <line x1="8" y1="23" x2="16" y2="23" />
         </svg>
       </button>
+      )}
     </div>
   )
 }

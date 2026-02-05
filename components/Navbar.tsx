@@ -5,9 +5,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from '@/components/ui/Button'
+import { useAuth } from '@/components/AuthProvider'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const { user, loading, signOut } = useAuth()
 
   return (
     <nav className="fixed top-4 left-4 right-4 z-50 bg-background-light/90 backdrop-blur-md border border-neutral-200 rounded-2xl shadow-lg max-w-7xl mx-auto">
@@ -45,9 +47,18 @@ export default function Navbar() {
             <Button href="/demo" variant="outline">
               Demo
             </Button>
-            <Button href="/contact" variant="primary">
-              Contact Us
-            </Button>
+            {user ? (
+              <button
+                onClick={() => signOut()}
+                className="px-4 py-2 text-neutral-700 hover:text-neutral-900 transition-colors"
+              >
+                Sign out
+              </button>
+            ) : (
+              <Button href="/login" variant="primary">
+                Sign in
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -115,9 +126,18 @@ export default function Navbar() {
               <Button href="/demo" variant="outline" className="w-full">
                 Demo
               </Button>
-              <Button href="/contact" variant="primary" className="w-full">
-                Contact Us
-              </Button>
+              {user ? (
+                <button
+                  onClick={() => { signOut(); setIsOpen(false) }}
+                  className="w-full px-4 py-3 text-left text-neutral-700 hover:bg-neutral-100 rounded-lg"
+                >
+                  Sign out
+                </button>
+              ) : (
+                <Button href="/login" variant="primary" className="w-full">
+                  Sign in
+                </Button>
+              )}
             </div>
           </motion.div>
         )}
