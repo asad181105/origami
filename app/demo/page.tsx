@@ -126,95 +126,131 @@ export default function DemoPage() {
             const isEven = index % 2 === 0
             
             return (
-              <motion.div
-                key={agent.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="w-full"
-              >
-                <Card className="p-0 overflow-hidden">
-                  <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
-                    {/* Description Side */}
-                    <div className={`flex-1 p-8 lg:p-12 flex flex-col justify-center ${isEven ? 'lg:pr-0' : 'lg:pl-0'}`}>
-                      <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-                        {agent.name}
-                      </h2>
-                      <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
-                        {agent.description}
-                      </p>
-                      
-                      {/* Features */}
-                      <div className="mb-8">
-                        <h3 className="text-sm font-semibold text-neutral-700 mb-3 uppercase tracking-wide">
-                          Key Features
-                        </h3>
-                        <ul className="space-y-2">
-                          {agent.features.map((feature, i) => (
-                            <li key={i} className="flex items-start">
-                              <svg
-                                className="w-5 h-5 text-accent-purple-700 mr-2 mt-0.5 flex-shrink-0"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                              <span className="text-neutral-600">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+              <div key={agent.id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="w-full"
+                >
+                  <Card className="p-0 overflow-hidden">
+                    <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
+                      {/* Description Side */}
+                      <div className={`flex-1 p-8 lg:p-12 flex flex-col justify-center ${isEven ? 'lg:pr-0' : 'lg:pl-0'}`}>
+                        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                          {agent.name}
+                        </h2>
+                        <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
+                          {agent.description}
+                        </p>
+                        
+                        {/* Features */}
+                        <div className="mb-8">
+                          <h3 className="text-sm font-semibold text-neutral-700 mb-3 uppercase tracking-wide">
+                            Key Features
+                          </h3>
+                          <ul className="space-y-2">
+                            {agent.features.map((feature, i) => (
+                              <li key={i} className="flex items-start">
+                                <svg
+                                  className="w-5 h-5 text-accent-purple-700 mr-2 mt-0.5 flex-shrink-0"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                                <span className="text-neutral-600">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
 
-                      {/* CTA Buttons */}
-                      <div className="flex flex-col sm:flex-row gap-4">
-                        {agent.id !== 'voice-bot' && (
-                          <Button href="/contact" variant="primary" className="w-full lg:w-auto">
-                            Try Now
-                          </Button>
-                        )}
-                        <Button href="/contact" variant="outline" className="w-full lg:w-auto">
-                          Contact Us
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Video / Demo Side */}
-                    <div className={`flex-1 ${isEven ? 'lg:pl-0' : 'lg:pr-0'}`}>
-                      {agent.id === 'voice-bot' ? (
-                        <div className="rounded-lg overflow-hidden relative w-full min-h-[320px] bg-neutral-900 flex flex-col items-center justify-center gap-4 p-6">
-                          {authLoading || (isLoggedIn && usageLoading) ? (
-                            <p className="text-neutral-500">Loading...</p>
-                          ) : !isLoggedIn ? (
-                            <>
-                              <p className="text-neutral-400 text-center">Sign in to try the voice demo</p>
-                              <Button href="/login" variant="primary">Sign in with Google</Button>
-                            </>
-                          ) : !canUse ? (
-                            <p className="text-neutral-500 text-center">Demo limit reached (2 min per account)</p>
-                          ) : (
-                            <p className="text-neutral-400 text-center">
-                              Use the Talk to AI button • {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')} left
-                            </p>
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          {agent.id !== 'voice-bot' && (
+                            <Button href="/contact" variant="primary" className="w-full lg:w-auto">
+                              Try Now
+                            </Button>
                           )}
+                          <Button href="/contact" variant="outline" className="w-full lg:w-auto">
+                            Contact Us
+                          </Button>
                         </div>
-                      ) : (
-                        <div className="relative w-full min-h-[320px] bg-neutral-900 rounded-lg flex items-center justify-center overflow-hidden">
-                          <p className="text-2xl font-semibold text-neutral-500 uppercase tracking-widest">
-                            Coming Soon
-                          </p>
-                        </div>
-                      )}
+                      </div>
+
+                      {/* Video / Demo Side */}
+                      <div className={`flex-1 ${isEven ? 'lg:pl-0' : 'lg:pr-0'}`}>
+                        {agent.id === 'voice-bot' ? (
+                          <div className="rounded-lg overflow-hidden relative w-full min-h-[320px] bg-neutral-900 flex flex-col items-center justify-center gap-4 p-6">
+                            {authLoading || (isLoggedIn && usageLoading) ? (
+                              <p className="text-neutral-500">Loading...</p>
+                            ) : !isLoggedIn ? (
+                              <>
+                                <p className="text-neutral-400 text-center">Sign in to try the voice demo</p>
+                                <Button href="/login" variant="primary">Sign in with Google</Button>
+                              </>
+                            ) : !canUse ? (
+                              <p className="text-neutral-500 text-center">Demo limit reached (2 min per account)</p>
+                            ) : (
+                              <p className="text-neutral-400 text-center">
+                                Use the Talk to AI button • {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')} left
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="relative w-full min-h-[320px] bg-neutral-900 rounded-lg flex items-center justify-center overflow-hidden">
+                            <p className="text-2xl font-semibold text-neutral-500 uppercase tracking-widest">
+                              Coming Soon
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </motion.div>
+                  </Card>
+                </motion.div>
+
+                {/* Review CTA - only after voice-bot */}
+                {agent.id === 'voice-bot' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mt-8 flex justify-center"
+                  >
+                    <div className="inline-flex items-center gap-4 px-6 py-4 bg-white border border-neutral-200 rounded-full shadow-sm">
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <svg
+                            key={star}
+                            className="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                            />
+                          </svg>
+                        ))}
+                      </div>
+                      <span className="text-neutral-600">Enjoyed the demo?</span>
+                      <Button href="/review" variant="outline" className="!py-2 !px-4">
+                        Leave a Review
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
             )
           })}
         </div>
@@ -225,7 +261,7 @@ export default function DemoPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-24 text-center"
+          className="mt-16 text-center"
         >
           <Card className="bg-gradient-to-br from-neutral-900 to-black text-white">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
